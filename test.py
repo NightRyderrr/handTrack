@@ -6,8 +6,8 @@ import handMod as htm
 
 pTime = 0
 cTime = 0
-cap = cv2.VideoCapture(1)
-detector = htm.handDetector()
+cap = cv2.VideoCapture(0)
+detector = htm.handDetector(False, 2)
 while True:
     success, img = cap.read()
     img = detector.findHands(img)
