@@ -54,3 +54,30 @@ def main():
         cv2.waitKey(1)
 if __name__ == "__main__":
     main()
+    
+    """ error message i keep getting
+    
+    
+   ceback (most recent call last):
+  File "C:\Users\carkp\PycharmProjects\pythonProject\handMod.py", line 55, in <module>
+    main()
+  File "C:\Users\carkp\PycharmProjects\pythonProject\handMod.py", line 40, in main
+    detector = handDetector()
+  File "C:\Users\carkp\PycharmProjects\pythonProject\handMod.py", line 11, in __init__
+    self.hands = self.mpHands.Hands(self.mode, self.maxHands,self.detectionCon, self.trackCon)
+  File "C:\Users\carkp\PycharmProjects\pythonProject\venv\lib\site-packages\mediapipe\python\solutions\hands.py", line 114, in __init__
+    super().__init__(
+  File "C:\Users\carkp\PycharmProjects\pythonProject\venv\lib\site-packages\mediapipe\python\solution_base.py", line 258, in __init__
+    self._input_side_packets = {
+  File "C:\Users\carkp\PycharmProjects\pythonProject\venv\lib\site-packages\mediapipe\python\solution_base.py", line 259, in <dictcomp>
+    name: self._make_packet(self._side_input_type_info[name], data)
+  File "C:\Users\carkp\PycharmProjects\pythonProject\venv\lib\site-packages\mediapipe\python\solution_base.py", line 513, in _make_packet
+    return getattr(packet_creator, 'create_' + packet_data_type.value)(data)
+TypeError: create_int(): incompatible function arguments. The following argument types are supported:
+    1. (arg0: int) -> mediapipe.python._framework_bindings.packet.Packet
+
+Invoked with: 0.5
+
+
+"""
+    
