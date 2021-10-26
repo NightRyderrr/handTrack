@@ -32,34 +32,56 @@ class handDetector():
 
     def findPosition(self, img, handNo=0):
         lmList = []
+
         if self.results.multi_hand_landmarks:
+            global id
             myHand = self.results.multi_hand_landmarks[handNo]
             for id, lm in enumerate(myHand.landmark):
-                # print(id, lm)
+                #print(id, lm)
                 h, w, c = img.shape
+                global cx
+                global cy
                 cx, cy = int(lm.x * w), int(lm.y * h)
                 #print(id, cx, cy)
                 lmList.append([id, cx, cy])
+            #    if id == 8:
+                    #print(cx,cy)
 
         return lmList
 
+   # def pointerValue(self):
+    #    coords = []
+     #   if id == 8:
+     #       coords.append(cx),coords.append(cy)
+      #  return coords
+
+
+
+
+
 
 def main():
+
     pTime = 0
     cTime = 0
     cap = cv2.VideoCapture(0)
     detector = handDetector()
+    global x1
+    global y1
+
     while True:
         success, img = cap.read()
         img = detector.findHands(img)
         lmList = detector.findPosition(img)
         if len(lmList) != 0:
-            print(lmList[4])
+            x1, y1 = lmList[8][1:]
+            #print(lmList[4])
         cTime = time.time()
+        print(x1, y1)
         fps = 1 / (cTime - pTime)
         pTime = cTime
-        cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3,
-                    (255, 0, 255), 3)
+        #cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3,
+                    #(255, 0, 255), 3)
 
 
         cv2.imshow("Img", cv2.flip(img, 1))
